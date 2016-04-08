@@ -1,0 +1,16 @@
+f8cea6535b6c89d6c9055435cde4ccba *DESCRIPTION
+08286339a651daa751458f5507853c98 *NAMESPACE
+d594a4d2fd7ef82a7603ad5cf51ff2a5 *R/BWStest.r
+d00319d1481da9e0b49bcddcd8dd5d2a *R/RcppExports.R
+cde5c8fdd68e12a5d58e8cb79ff2a571 *R/bws_test.r
+f7143b0c1f0a0baf59f2d616ed00bf05 *README.md
+effa9e4def4a8ee616a18ae66da18306 *man/BWStest-package.Rd
+f02c6f672321f16984b7c46275a6cf43 *man/NEWS.Rd
+c9384f99ce29669c8c6bb2b7f05c0e3e *man/bws_cdf.Rd
+adab2158b6aeea2bbea72eb5c42310ba *man/bws_stat.Rd
+b3d45bfa2e50c4a99ea4db843fb9b262 *man/bws_test.Rd
+04eceb6076f6dc171d596144226a43a1 *src/RcppExports.cpp
+d8db370281f9a84323b2e14c99653fee *src/bws_stat.cpp
+0bae98c444b8e5dc7d07ccb173b716f3 *tests/testthat.R
+6ccd4145a1a4e4ac8100fc41a0d3ec97 *tests/testthat/test-basic.r
+d9fc0b98043d31af3b274a765f91de59 *tests/testthat/test-correctness.r
