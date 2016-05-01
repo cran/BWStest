@@ -4,12 +4,37 @@
 \alias{bws_test}
 \title{Perform the Baumgartner-Weiss-Schindler hypothesis test.}
 \usage{
-bws_test(x, y)
+bws_test(x, y, method = c("default", "BWS", "Neuhauser", "B1", "B2", "B3",
+  "B4", "B5"), alternative = c("two.sided", "greater", "less"))
 }
 \arguments{
 \item{x}{a vector of the first sample.}
 
 \item{y}{a vector of the first sample.}
+
+\item{method}{a character string specifying the test statistic to use.
+should be one of the following:
+\describe{
+\item{default}{This is \dQuote{Hobson's choice}, which uses the classical
+BWS test for two-sided alternative, but Neuhauser for one sided
+alternatives.}
+\item{BWS}{Use the classical BWS test.}
+\item{Neuhauser}{Use Neuhauser's test.}
+\item{B1}{Use Murakami's \eqn{B_1}{B1} test.}
+\item{B2}{Use Murakami's \eqn{B_2}{B2} test, which is exactly Neuhauser's test.}
+\item{B3}{Use Murakami's \eqn{B_3}{B3} test.}
+\item{B4}{Use Murakami's \eqn{B_4}{B4} test.}
+\item{B5}{Use Murakami's \eqn{B_5}{B5} test.}
+}
+Only Neuhauser's test supports one-sided alternatives.}
+
+\item{alternative}{a character string specifying the alternative hypothesis,
+must be one of \dQuote{two.sided} (default), \dQuote{greater} or
+\dQuote{less}. You can specify just the initial letter.
+\dQuote{greater} corresponds to testing whether the survival function
+of \code{x} is greater than that of \code{y}; equivalently one can
+think of this as \code{x} being \sQuote{greater} than \code{y}
+in the sense of first order stochastic dominance.}
 }
 \value{
 Object of class \code{htest}, a list of the test statistic,
@@ -19,8 +44,10 @@ the p-value, and the \code{method} noted.
 Perform the Baumgartner-Weiss-Schindler hypothesis test.
 }
 \note{
-Eventually this will support the one-sided tests of
-Neuhauser and Murakami.
+The code will happily compute Murakami's \eqn{B_3} through \eqn{B_5}
+for large sample sizes, even though nominal coverage is \emph{not} achieved.
+A warning will be thrown. User assumes all risk relying on results from this
+function.
 }
 \examples{
 
@@ -33,20 +60,37 @@ hval <- bws_test(x,y)
 # under the alternative
 set.seed(123)
 x <- rnorm(100)
-y <- rnorm(100,mean=0.5)
+y <- rnorm(100,mean=1.0)
 hval <- bws_test(x,y)
+show(hval)
+stopifnot(hval$p.value < 0.05)
+
+# under the alternative with a one sided test.
+set.seed(123)
+x <- rnorm(100)
+y <- rnorm(100,mean=0.7)
+hval <- bws_test(x,y,alternative='less')
+show(hval)
+stopifnot(hval$p.value < 0.01)
+
+hval <- bws_test(x,y,alternative='greater')
+stopifnot(hval$p.value > 0.99)
+
+hval <- bws_test(x,y,alternative='two.sided')
+stopifnot(hval$p.value < 0.05)
 
 }
 \author{
 Steven E. Pav \email{shabbychef@gmail.com}
 }
 \references{
-W. Baumgartner, P. Weiss, H. Schindler, 'A Nonparametric Test for the General Two-Sample Problem', 
-Biometrics, Vol. 54, No. 3 (Sep., 1998), pp. 1129-1135. 
+W. Baumgartner, P. Weiss, H. Schindler, 'A nonparametric test for the general two-sample problem', 
+Biometrics 54, no. 3 (Sep., 1998): pp. 1129-1135. 
 \url{http://doai.io/10.2307/2533862}
 }
 \seealso{
-\code{\link{bws_test}}, \code{\link{bws_stat}}
+\code{\link{bws_test}}, \code{\link{bws_stat}},
+\code{\link{murakami_stat}}, \code{\link{murakami_cdf}}.
 }
 \keyword{htest}
 

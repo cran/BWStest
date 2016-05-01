@@ -113,3 +113,77 @@ bws_cdf <- function(b, maxj = 5L, lower_tail = TRUE) {
     .Call('BWStest_bws_cdf', PACKAGE = 'BWStest', b, maxj, lower_tail)
 }
 
+#' @title
+#' Compute Murakami's test statistic.
+#'
+#' @description
+#'
+#' Compute one of the modified Baumgartner-Weiss-Schindler test statistics proposed
+#' by Murakami, or Neuhauser.
+#'
+#' @details
+#'
+#' Given vectors \eqn{X} and \eqn{Y}, computes \eqn{B_{jX}} and \eqn{B_{jY}} 
+#' for some \eqn{j} as described by Murakami and by Neuhauser, returning either their 
+#' their average or their average distance.
+#' The test statistics approximate the weighted square norm of the
+#' difference in CDFs of the two distributions. 
+#'
+#' The test statistic is based only on the ranks of the input. If the same
+#' monotonic transform is applied to both vectors, the result should be unchanged.
+#'
+#' The various \sQuote{flavor}s of test statistic are:
+#' \describe{
+#' \item{0}{The statistic of Baumgartner-Weiss-Schindler.}
+#' \item{1}{Murakami's \eqn{B_1} statistic, from his 2006 paper.}
+#' \item{2}{Neuhauser's difference statistic, denoted by Murakami as \eqn{B_2} in his 
+#' 2012 paper.}
+#' \item{3}{Murakami's \eqn{B_3} statistic, from his 2012 paper.}
+#' \item{4}{Murakami's \eqn{B_4} statistic, from his 2012 paper.}
+#' \item{5}{Murakami's \eqn{B_5} statistic, from his 2012 paper, with a log weighting.}
+#' }
+#'
+#' @param x a vector of the first sample.
+#' @param y a vector of the second sample.
+#' @param flavor which \sQuote{flavor} of test statistic. 
+#' @param nx the length of \code{x}, the first sample.
+#' @param ny the length of \code{y}, the second sample.
+#'
+#' @return The BWS test statistic, \eqn{B_j}. For \code{murakami_stat_perms}, a vector of
+#' the test statistics for \emph{all} permutations of the input.
+#' @note \code{NA} and \code{NaN} are not yet dealt with!
+#' @seealso \code{\link{bws_stat}}.
+#' @examples
+#'
+#' set.seed(1234)
+#' x <- runif(1000)
+#' y <- runif(100)
+#' bval <- murakami_stat(x,y,1)
+#'
+#' \dontrun{
+#' nx <- 6
+#' ny <- 5
+#' # monte carlo
+#' set.seed(1234)
+#' repli <- replicate(3000,murakami_stat(rnorm(nx),rnorm(ny),0L))
+#' # under the null, perform the permutation test:
+#' allem <- murakami_stat_perms(nx,ny,0L)
+#' plot(ecdf(allem)) 
+#' lines(ecdf(repli),col='red') 
+#' }
+#'
+#' @template etc
+#' @template ref-bws
+#' @template ref-modtests
+#' @rdname murakami_stat
+#' @export
+murakami_stat <- function(x, y, flavor = 0L) {
+    .Call('BWStest_murakami_stat', PACKAGE = 'BWStest', x, y, flavor)
+}
+
+#' @rdname murakami_stat
+#' @export
+murakami_stat_perms <- function(nx, ny, flavor = 0L) {
+    .Call('BWStest_murakami_stat_perms', PACKAGE = 'BWStest', nx, ny, flavor)
+}
+

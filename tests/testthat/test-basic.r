@@ -55,6 +55,68 @@ test_that("runs without error",{#FOLDUP
 	# sentinel
 	expect_true(TRUE)
 })#UNFOLD
+test_that("murakami computations",{#FOLDUP
+	set.char.seed("f1a7627e-3545-4fdf-a5bf-10cf9a4bb396")
+	for (flavor in 0:5) {
+		statv <- murakami_stat(rnorm(10),rnorm(10),flavor)
+		allev <- murakami_stat_perms(3,3,flavor)
+		allev <- murakami_stat_perms(6,3,flavor)
+
+		# hope this errors, or it will consume all your memory!
+		expect_error(allev <- murakami_stat_perms(40,40,flavor))
+	}
+	expect_error(statv <- murakami_stat(rnorm(10),rnorm(10),flavor=-1))
+	expect_error(statv <- murakami_stat(rnorm(10),rnorm(10),flavor=6))
+
+	# all for coverage
+	for (lower_tail in c(FALSE,TRUE)) {
+		for (flavor in c(0:5)) {
+			cdfv <- murakami_cdf(seq(-1,1,length.out=101),n1=5,n2=5,flavor=flavor,lower_tail=lower_tail)
+			cdfv <- murakami_cdf(seq(-1,1,length.out=101),n1=5,n2=4,flavor=flavor,lower_tail=lower_tail)
+			cdfv <- murakami_cdf(seq(-1,1,length.out=101),n1=4,n2=5,flavor=flavor,lower_tail=lower_tail)
+		}
+		expect_error(cdfv <- murakami_cdf(seq(-1,1,length.out=101),n1=-5,n2=5,flavor=0L,lower_tail=lower_tail))
+		expect_error(cdfv <- murakami_cdf(seq(-1,1,length.out=101),n1=4,n2=5,flavor=-1,lower_tail=lower_tail))
+		expect_error(cdfv <- murakami_cdf(seq(-1,1,length.out=101),n1=4,n2=5,flavor=6,lower_tail=lower_tail))
+	}
+
+	# sentinel
+	expect_true(TRUE)
+})#UNFOLD
+test_that("bws_test",{#FOLDUP
+	set.char.seed("140d1002-1cc4-426a-8489-d7cd62988d0b")
+
+	x <- rnorm(8)
+	y <- rnorm(8)
+
+	for (mth in c('default','BWS','Neuhauser','B1','B2','B3','B4','B5')) {
+		hval <- bws_test(x,y,method=mth,alternative='two.sided')
+	}
+
+	for (mth in c('Neuhauser','B2')) {
+		for (alt in c("two.sided","greater","less")) {
+			hval <- bws_test(x,y,method=mth,alternative=alt)
+		}
+	}
+	for (mth in c('BWS','B1','B3','B4','B5')) {
+		for (alt in c("greater","less")) {
+			expect_error(hval <- bws_test(x,y,method=mth,alternative=alt))
+		}
+	}
+
+	# better get warnings out of this due to small sample size...
+	x <- rnorm(20)
+	y <- rnorm(20)
+
+	for (mth in c('B3','B4','B5')) {
+		for (alt in c("two.sided")) {
+			expect_warning(hval <- bws_test(x,y,method=mth,alternative=alt))
+		}
+	}
+
+	# sentinel
+	expect_true(TRUE)
+})#UNFOLD
 
 # 2FIX: check the effects of NA
 #UNFOLD
