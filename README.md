@@ -143,7 +143,7 @@ ph <- ggplot(data.frame(pv = pvals), aes(sample = pv)) +
 print(ph)
 ```
 
-<img src="github_extra/figure/babysteps-1.png" title="plot of chunk babysteps" alt="plot of chunk babysteps" width="500px" height="400px" />
+<img src="tools/figure/babysteps-1.png" title="plot of chunk babysteps" alt="plot of chunk babysteps" width="500px" height="400px" />
 
 Looks good to me!
 
@@ -209,7 +209,7 @@ ph <- ggplot(plotdf, aes(x = a, y = rejection_rate,
 print(ph)
 ```
 
-<img src="github_extra/figure/fig_two_A-1.png" title="plot of chunk fig_two_A" alt="plot of chunk fig_two_A" width="700px" height="500px" />
+<img src="tools/figure/fig_two_A-1.png" title="plot of chunk fig_two_A" alt="plot of chunk fig_two_A" width="700px" height="500px" />
 
 Here we replicate figure 2B of Baumgartner _et al._ We draw two samples from the normal distribution,
 both with zero mean, one with unit standard deviation, the other with standard deviation of _sigma_.
@@ -268,7 +268,7 @@ ph <- ggplot(plotdf, aes(x = sigma, y = rejection_rate,
 print(ph)
 ```
 
-<img src="github_extra/figure/fig_two_B-1.png" title="plot of chunk fig_two_B" alt="plot of chunk fig_two_B" width="700px" height="500px" />
+<img src="tools/figure/fig_two_B-1.png" title="plot of chunk fig_two_B" alt="plot of chunk fig_two_B" width="700px" height="500px" />
 
 Here we replicate figure 3A of Baumgartner _et al._ We draw two samples from the exponential distribution,
 letting _l_ be the ratio of the rate parameters of the two populations.
@@ -325,7 +325,7 @@ ph <- ggplot(plotdf, aes(x = lratio, y = rejection_rate,
 print(ph)
 ```
 
-<img src="github_extra/figure/fig_three_A-1.png" title="plot of chunk fig_three_A" alt="plot of chunk fig_three_A" width="700px" height="500px" />
+<img src="tools/figure/fig_three_A-1.png" title="plot of chunk fig_three_A" alt="plot of chunk fig_three_A" width="700px" height="500px" />
 
 Here we replicate figure 3B of Baumgartner _et al._ We draw two samples, one from the normal distribution
 with zero mean and variance one-twelth, the other uniformly on -0.5 to 0.5. We take equal sample sizes
@@ -386,7 +386,7 @@ ph <- ggplot(plotdf, aes(x = ssize, y = rejection_rate,
 print(ph)
 ```
 
-<img src="github_extra/figure/fig_three_B-1.png" title="plot of chunk fig_three_B" alt="plot of chunk fig_three_B" width="700px" height="500px" />
+<img src="tools/figure/fig_three_B-1.png" title="plot of chunk fig_three_B" alt="plot of chunk fig_three_B" width="700px" height="500px" />
 
 ## Murakami tests
 
@@ -435,7 +435,7 @@ ph <- ggplot(df, aes(sample = pv)) + facet_grid(flavor ~
 print(ph)
 ```
 
-<img src="github_extra/figure/murakami_null-1.png" title="plot of chunk murakami_null" alt="plot of chunk murakami_null" width="500px" height="600px" />
+<img src="tools/figure/murakami_null-1.png" title="plot of chunk murakami_null" alt="plot of chunk murakami_null" width="500px" height="600px" />
 
 While these all look fine, they are based on small sample sizes. The CDF is approximated by evaluating
 all the permutations (with memoisation to tame the computational requirements), but this can only be
@@ -468,7 +468,7 @@ ph <- ggplot(df, aes(sample = pv)) + facet_grid(flavor ~
 print(ph)
 ```
 
-<img src="github_extra/figure/murakami_null_2-1.png" title="plot of chunk murakami_null_2" alt="plot of chunk murakami_null_2" width="500px" height="600px" />
+<img src="tools/figure/murakami_null_2-1.png" title="plot of chunk murakami_null_2" alt="plot of chunk murakami_null_2" width="500px" height="600px" />
 
 So that's not so great. 
 
@@ -528,7 +528,7 @@ ph <- ggplot(plotdf, aes(x = a, y = rejection_rate,
 print(ph)
 ```
 
-<img src="github_extra/figure/murakami_fig_two_A-1.png" title="plot of chunk murakami_fig_two_A" alt="plot of chunk murakami_fig_two_A" width="700px" height="500px" />
+<img src="tools/figure/murakami_fig_two_A-1.png" title="plot of chunk murakami_fig_two_A" alt="plot of chunk murakami_fig_two_A" width="700px" height="500px" />
 
 Now we consider figure2B, with two samples of equal size from the normal distribution with zero
 mean, but different standard deviations. Neuhäuser's test is nearly useless here because the 
@@ -582,7 +582,7 @@ ph <- ggplot(plotdf, aes(x = sigma, y = rejection_rate,
 print(ph)
 ```
 
-<img src="github_extra/figure/murakami_fig_two_B-1.png" title="plot of chunk murakami_fig_two_B" alt="plot of chunk murakami_fig_two_B" width="700px" height="500px" />
+<img src="tools/figure/murakami_fig_two_B-1.png" title="plot of chunk murakami_fig_two_B" alt="plot of chunk murakami_fig_two_B" width="700px" height="500px" />
 
 Now to figure 3A, with
 two equal sized samples from the exponential distribution,
@@ -635,7 +635,7 @@ ph <- ggplot(plotdf, aes(x = lratio, y = rejection_rate,
 print(ph)
 ```
 
-<img src="github_extra/figure/murakami_fig_three_A-1.png" title="plot of chunk murakami_fig_three_A" alt="plot of chunk murakami_fig_three_A" width="700px" height="500px" />
+<img src="tools/figure/murakami_fig_three_A-1.png" title="plot of chunk murakami_fig_three_A" alt="plot of chunk murakami_fig_three_A" width="700px" height="500px" />
 
 Now figure 3B, with a normal sample and a uniform sample, with equal first and second moments, varying
 the sample size. Because flavors 3 through 5 are not well behaved, we drop them here. Once again
@@ -685,7 +685,7 @@ ph <- ggplot(plotdf, aes(x = ssize, y = rejection_rate,
 print(ph)
 ```
 
-<img src="github_extra/figure/murakami_fig_three_B-1.png" title="plot of chunk murakami_fig_three_B" alt="plot of chunk murakami_fig_three_B" width="700px" height="500px" />
+<img src="tools/figure/murakami_fig_three_B-1.png" title="plot of chunk murakami_fig_three_B" alt="plot of chunk murakami_fig_three_B" width="700px" height="500px" />
 
 # Future work
 

@@ -60,16 +60,23 @@ NULL
 #'
 #' News for package 'BWStest'
 #'
-#' \newcommand{\CRANpkg}{\href{http://CRAN.R-project.org/package=#1}{\pkg{#1}}}
+#' \newcommand{\CRANpkg}{\href{https://cran.r-project.org/package=#1}{\pkg{#1}}}
 #' \newcommand{\cranBWStest}{\CRANpkg{BWStest}}
 #' \newcommand{\BWStest}{\href{https://github.com/shabbychef/BWStest}}
 #'
-#' @section \BWStest{} Initial Version 0.2.0 (2016-04-29) :
+#' @section \BWStest{} Version 0.2.1 (2017-03-20) :
+#' \itemize{
+#' \item Package maintenance--no new features.
+#' \item move github figures to location CRAN understands.
+#' \item package initialization mumbo jumbo, see Rcpp issue 636.
+#' }
+#'
+#' @section \BWStest{} Version 0.2.0 (2016-04-29) :
 #' \itemize{
 #' \item Adding Murakami statistics.
 #' }
 #'
-#' @section \BWStest{} Initial Version 0.1.0 (2016-04-07) :
+#' @section \BWStest{} Version 0.1.0 (2016-04-07) :
 #' \itemize{
 #' \item First CRAN release.
 #' }
