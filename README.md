@@ -2,14 +2,14 @@
 
 # BWStest
 
-[![Build Status](https://travis-ci.org/shabbychef/BWStest.png)](https://travis-ci.org/shabbychef/BWStest)
-[![codecov.io](http://codecov.io/github/shabbychef/BWStest/coverage.svg?branch=master)](http://codecov.io/github/shabbychef/BWStest?branch=master)
-[![CRAN](http://www.r-pkg.org/badges/version/BWStest)](https://cran.r-project.org/package=BWStest)
-[![Downloads](http://cranlogs.r-pkg.org/badges/BWStest?color=green)](http://www.r-pkg.org/pkg/BWStest)
-[![Total](http://cranlogs.r-pkg.org/badges/grand-total/BWStest?color=green)](http://www.r-pkg.org/pkg/BWStest)
+[![Build Status](https://github.com/shabbychef/BWStest/workflows/R-CMD-check/badge.svg)](https://github.com/shabbychef/BWStest/actions)
+[![codecov.io](http://codecov.io/github/shabbychef/BWStest/coverage.svg?branch=master)](https://app.codecov.io/github/shabbychef/BWStest?branch=master)
+[![CRAN](https://www.r-pkg.org/badges/version/BWStest)](https://cran.r-project.org/package=BWStest)
+[![Downloads](http://cranlogs.r-pkg.org/badges/BWStest?color=green)](https://www.r-pkg.org:443/pkg/BWStest)
+[![Total](http://cranlogs.r-pkg.org/badges/grand-total/BWStest?color=green)](https://www.r-pkg.org:443/pkg/BWStest)
 ![RCpp](https://img.shields.io/badge/RCpp-inside-blue.svg)
 
-Performs the [Baumgartner-Weiß-Schindler 2-sample test](http://doai.io/10.2307/2533862) of equal probability
+Performs the [Baumgartner-Weiß-Schindler 2-sample test](https://doi.org/10.2307/2533862) of equal probability
 distributions. 
 
 -- Steven E. Pav, shabbychef@gmail.com
@@ -36,7 +36,15 @@ if (require(devtools)) {
 }
 ```
 
-# Basic Usage
+## What is it?
+
+The Baumgartner-Weiß-Schindler ('BWS') test is a non-parametric hypothesis test for the null of
+equal probability distributions of two samples, not unlike the two-sample
+Kolmogorov-Smirnov test or the Wilcoxon test. 
+The BWS test is more powerful than these other tests under certain
+alternatives, as shown in the original paper and replicated below.
+
+## Basic Usage
 
 The front end for the hypothesis test is the function `bws_test`. By default it supports
 the the classical Baumgartner-Weiß-Schindler test for a two-sided alternative, returning a `htest` object:
@@ -390,8 +398,8 @@ print(ph)
 
 ## Murakami tests
 
-[Neuhäuser](http://doai.io/10.1007/BF02762032) and 
-[Murakami](http://doai.io/10.1080/00949655.2010.551516) described
+[Neuhäuser](https://doi.org/10.1007/BF02762032) and 
+[Murakami](https://doi.org/10.1080/00949655.2010.551516) described
 some modifications to the original test of Baumgartner. Neuhäuser's
 test allows one to test against directional alternatives. Murakami
 enumerated some modifications to the weighting scheme. These are

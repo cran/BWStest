@@ -46,7 +46,7 @@ set.seed(123)
 bvals <- replicate(500, bws_stat(rnorm(50),rnorm(50)))
 pvals <- bws_cdf(bvals)
 # these should be uniform!
-\dontrun{ 
+\donttest{ 
   plot(ecdf(pvals)) 
 }
 
@@ -60,7 +60,7 @@ show(data.frame(B=bvals,BWS_psi=tab1v,our_psi=pvals))
 \references{
 W. Baumgartner, P. Weiss, H. Schindler, 'A nonparametric test for the general two-sample problem', 
 Biometrics 54, no. 3 (Sep., 1998): pp. 1129-1135. 
-\url{http://doai.io/10.2307/2533862}
+\doi{10.2307/2533862}
 }
 \seealso{
 \code{\link{bws_stat}}, \code{\link{bws_test}}
